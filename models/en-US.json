@@ -1,0 +1,33 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "new year facts",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "factIntent",
+          "samples": [
+            "facts facts",
+            "it's facts time",
+            "give me a fact",
+            "give me a new fact",
+            "tell me a fact",
+            "tell me a new fact"
+          ],
+          "slots": []
+        }
+      ]
+    }
+  }
+}
