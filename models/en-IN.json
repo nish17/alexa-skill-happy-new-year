@@ -1,0 +1,65 @@
+{
+  "languageModel": {
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "countDownIntent",
+        "samples": [
+          "how much time is remaining for the new year",
+          "how many days are remaining for the new year",
+          "how many days to new year",
+          "today to new year days remaining",
+          "start countdown",
+          "lets begin the countdown",
+          "show the time remaining for the new year",
+          "days to the new year"
+        ],
+        "slots": []
+      },
+      {
+        "name": "factIntent",
+        "samples": [
+          "tell me a new fact",
+          "give me a new fact",
+          "tell me a fact",
+          "give me a fact",
+          "it's fact time",
+          "facts facts"
+        ],
+        "slots": []
+      },
+      {
+        "name": "wishIntent",
+        "samples": [
+          "wish {guestName}",
+          "wish happy new year to {guestName}",
+          "greet {guestName}",
+          "greet happy new year to {guestName}",
+          "please with {guestName} a very happy new year",
+          "please wish {guestName} a happy new year",
+          "please greet everyone",
+          "please wish everyone a very happy new year",
+          "please wish everyone a happy new year"
+        ],
+        "slots": [
+          {
+            "name": "guestName",
+            "type": "AMAZON.FirstName"
+          }
+        ]
+      }
+    ],
+    "invocationName": "new year voice"
+  }
+}

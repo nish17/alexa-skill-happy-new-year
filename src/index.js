@@ -65,6 +65,15 @@ const facts = [
   'In Australia’s Sydney Harbour, the shoreline stretching 40 miles is crowded by more than a million people just for watching the fireworks show.'
 ];
 
+
+exports.handler = function(event, context, callback) {
+  var alexa = Alexa.handler(event, context);
+  alexa.appId = APP_ID;
+  alexa.registerHandlers(handlers);
+  alexa.execute();
+};
+
+
 function getDateAndTime(){
 	var countDownDate = new Date("Jan 1, 2018 00:00:00").getTime();
 	var now = new Date().getTime();
@@ -81,13 +90,6 @@ function getDateAndTime(){
 
 getDateAndTime();
 
-
-exports.handler = function(event, context, callback) {
-  var alexa = Alexa.handler(event, context);
-  alexa.appId = APP_ID;
-  alexa.registerHandlers(handlers);
-  alexa.execute();
-};
 
 const handlers = {
   'LaunchRequest': function () {
@@ -106,12 +108,14 @@ const handlers = {
   'wishIntent': function(){
 			let name = this.event.request.intent.slots.guestName.value;
 			if(name === undefined) name = "";
-			let speechOutput =  name + ' ' + 'Happy New Year!';
+			let speechOutput =  name + ' Happy New Year!';
+			this.response.cardRenderer(SKILL_NAME, speechOutput);
 			this.emit(':tell', speechOutput); 
 	},
-	'countDownIntent':function(){
+	'countDownIntent': function(){
 		let speech = getDateAndTime();
-		this.response.speak(speech);
+		this.response.speak(speech + ' remaining for the new year!');
+		this.response.cardRenderer(SKILL_NAME, speechOutput);
 		this.emit(':responseReady');
 	},
   'AMAZON.HelpIntent': function () {
@@ -128,5 +132,10 @@ const handlers = {
   'AMAZON.StopIntent': function () {
       this.response.speak(STOP_MESSAGE);
       this.emit(':responseReady');
-  },
+	},
+	Unhandled() {
+    this.response.speak(
+      `Sorry, I didn't get that. You can try asking for help` 
+    );
+  }
 };
