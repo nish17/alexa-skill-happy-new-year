@@ -115,7 +115,7 @@ const handlers = {
 	'countDownIntent': function(){
 		let speech = getDateAndTime();
 		this.response.speak(speech + ' remaining for the new year!');
-		this.response.cardRenderer(SKILL_NAME, speechOutput);
+		this.response.cardRenderer(SKILL_NAME, speech);
 		this.emit(':responseReady');
 	},
   'AMAZON.HelpIntent': function () {
